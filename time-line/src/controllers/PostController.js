@@ -7,11 +7,12 @@ module.exports = {
         return response.json(posts);
     },
     async store (request, response) {
-        const { user_id, description } = request.body;
+        const { user_id, description, image_url } = request.body;
     
         const post = await Post.create({
             user_id,
-            description
+            description,
+            image_url
         });
     
         return response.json(post);
