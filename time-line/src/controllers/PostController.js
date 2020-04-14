@@ -4,23 +4,20 @@ module.exports = {
     async index (request, response) {
         const posts = await Post.find();
 
-        return response.json(posts);
+        return response.send(posts);
     },
     async store (request, response) {
-        const { user_id, description, image_url } = request.body;
+        const { description, image_url } = request.body;
+        const user_id = request.userId;
     
         const post = await Post.create({
             user_id,
             description,
             image_url
         });
-    
-        return response.json(post);
+        
+        return response.send(post);
     },
-    // async update (request, response) {
-    
-    // },
-    // async destroy (request, response) {
-
-    // }
+    // async update (request, response) {},
+    // async destroy (request, response) {}
 };
